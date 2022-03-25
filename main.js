@@ -101,6 +101,45 @@ const earth = new THREE.Mesh(
 
 scene.add(earth)
 
+const moonTexture = new THREE.TextureLoader().load('moon.jpg')
+const moonBump = new THREE.TextureLoader().load('moonbump.jpg')
+
+const moon = new THREE.Mesh(
+  new THREE.SphereGeometry(3, 32, 32),
+  new THREE.MeshStandardMaterial({
+    map: moonTexture,
+    bumpMap: moonBump,
+  })
+)
+
+scene.add(moon)
+
+const marsTexture = new THREE.TextureLoader().load('mars.jpg')
+const marsBump = new THREE.TextureLoader().load('marsbump.jpg')
+const marsNormal = new THREE.TextureLoader().load('marsnormal.jpg')
+
+const mars = new THREE.Mesh(
+  new THREE.SphereGeometry(3, 32, 32),
+  new THREE.MeshStandardMaterial({
+    map: marsTexture,
+    bumpMap: marsBump,
+    normalMap: marsNormal
+  })
+)
+
+scene.add(mars)
+
+const jupiterTexture = new THREE.TextureLoader().load('jupiter.jpg')
+
+const jupiter = new THREE.Mesh(
+  new THREE.SphereGeometry(3, 32, 32),
+  new THREE.MeshStandardMaterial({
+    map: jupiterTexture,
+  })
+)
+
+scene.add(jupiter)
+
 sun.position.z = 10
 sun.position.setX(-10)
 
@@ -112,6 +151,15 @@ venus.position.setX(-10)
 
 earth.position.z = 40
 earth.position.setX(-10)
+
+moon.position.z = 50
+moon.position.setX(-10)
+
+mars.position.z = 60
+mars.position.setX(-10)
+
+jupiter.position.z = 70
+jupiter.position.setX(-10)
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top
@@ -130,6 +178,18 @@ function moveCamera() {
   earth.rotation.x += 0.05
   earth.rotation.y += 0.075
   earth.rotation.z += 0.05
+
+  moon.rotation.x += 0.05
+  moon.rotation.y += 0.075
+  moon.rotation.z += 0.05
+
+  mars.rotation.x += 0.05
+  mars.rotation.y += 0.075
+  mars.rotation.z += 0.05
+
+  jupiter.rotation.x += 0.05
+  jupiter.rotation.y += 0.075
+  jupiter.rotation.z += 0.05
 
   abel.rotation.y += 0.01
   abel.rotation.z += 0.01
