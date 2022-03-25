@@ -2,8 +2,6 @@ import './style.css'
 
 import * as THREE from 'three'
 
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-
 const scene = new THREE.Scene()
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
@@ -27,8 +25,6 @@ pointLight.position.set(5, 5, 5)
 
 const ambientLight = new THREE.AmbientLight(0xffffff)
 scene.add(pointLight, ambientLight)
-
-const controls = new OrbitControls(camera, renderer.domElement)
 
 function addStar() {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24)
@@ -55,27 +51,25 @@ const abel = new THREE.Mesh(
 
 scene.add(abel)
 
-const moonTexture = new THREE.TextureLoader().load('moon.jpg')
-const normalTexture = new THREE.TextureLoader().load('normal.jpg')
+const earthTexture = new THREE.TextureLoader().load('earth.jpg')
 
-const moon = new THREE.Mesh(
+const earth = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
   new THREE.MeshStandardMaterial({
-    map: moonTexture,
-    normalMap: normalTexture
+    map: earthTexture,
   })
 )
 
-scene.add(moon)
+scene.add(earth)
 
-moon.position.z = 30
-moon.position.setX(-10)
+earth.position.z = 30
+earth.position.setX(-10)
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top
-  moon.rotation.x += 0.05
-  moon.rotation.y += 0.075
-  moon.rotation.z += 0.05
+  earth.rotation.x += 0.05
+  earth.rotation.y += 0.075
+  earth.rotation.z += 0.05
 
   abel.rotation.y += 0.01
   abel.rotation.z += 0.01
@@ -86,6 +80,7 @@ function moveCamera() {
 }
 
 document.body.onscroll = moveCamera
+moveCamera()
 
 function animate() {
   requestAnimationFrame(animate)
@@ -93,8 +88,6 @@ function animate() {
   torus.rotation.x += 0.01
   torus.rotation.y += 0.005
   torus.rotation.z += 0.01
-
-  controls.update()
 
   renderer.render(scene, camera)
 }
