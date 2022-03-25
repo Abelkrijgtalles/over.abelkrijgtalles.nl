@@ -140,6 +140,61 @@ const jupiter = new THREE.Mesh(
 
 scene.add(jupiter)
 
+const saturnTexture = new THREE.TextureLoader().load('saturn.jpg')
+
+const saturn = new THREE.Mesh(
+  new THREE.SphereGeometry(3, 32, 32),
+  new THREE.MeshStandardMaterial({
+    map: saturnTexture,
+  })
+)
+
+scene.add(saturn)
+
+const ringTexture = new THREE.TextureLoader().load('ring.jpg')
+
+const ring = new THREE.Mesh(
+  new THREE.TorusGeometry(4, 1, 2, 100),
+  new THREE.MeshStandardMaterial({
+    map: ringTexture
+  })
+)
+
+scene.add(ring)
+
+const uranusTexture = new THREE.TextureLoader().load('uranus.jpg')
+
+const uranus = new THREE.Mesh(
+  new THREE.SphereGeometry(3, 32, 32),
+  new THREE.MeshStandardMaterial({
+    map: uranusTexture,
+  })
+)
+
+scene.add(uranus)
+
+const uranusRingTexture = new THREE.TextureLoader().load('uranusring.jpg')
+
+const uranusRing = new THREE.Mesh(
+  new THREE.TorusGeometry(4, 1, 2, 100),
+  new THREE.MeshStandardMaterial({
+    map: uranusRingTexture
+  })
+)
+
+scene.add(uranusRing)
+
+const neptuneTexture = new THREE.TextureLoader().load('neptune.jpg')
+
+const neptune = new THREE.Mesh(
+  new THREE.SphereGeometry(3, 32, 32),
+  new THREE.MeshStandardMaterial({
+    map: neptuneTexture
+  })
+)
+
+scene.add(neptune)
+
 sun.position.z = 10
 sun.position.setX(-10)
 
@@ -161,35 +216,48 @@ mars.position.setX(-10)
 jupiter.position.z = 70
 jupiter.position.setX(-10)
 
+saturn.position.z = 80
+saturn.position.setX(-10)
+
+ring.position.z = 80
+ring.position.setX(-10)
+ring.rotation.x = 180
+
+uranus.position.z = 90
+uranus.position.setX(-10)
+
+uranusRing.position.z = 90
+uranusRing.position.setX(-10)
+uranusRing.rotation.x = 100
+
+neptune.position.z = 100
+neptune.position.setX(-10)
+
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top
-  sun.rotation.x += 0.05
   sun.rotation.y += 0.075
-  sun.rotation.z += 0.05
 
-  mercury.rotation.x += 0.05
   mercury.rotation.y += 0.075
-  mercury.rotation.z += 0.05
 
-  venus.rotation.x += 0.05
   venus.rotation.y += 0.075
-  venus.rotation.z += 0.05
 
-  earth.rotation.x += 0.05
   earth.rotation.y += 0.075
-  earth.rotation.z += 0.05
 
-  moon.rotation.x += 0.05
   moon.rotation.y += 0.075
-  moon.rotation.z += 0.05
 
-  mars.rotation.x += 0.05
   mars.rotation.y += 0.075
-  mars.rotation.z += 0.05
 
-  jupiter.rotation.x += 0.05
   jupiter.rotation.y += 0.075
-  jupiter.rotation.z += 0.05
+
+  saturn.rotation.y += 0.075
+
+  ring.rotation.z += 0.075
+
+  uranus.rotation.y += 0.075
+
+  uranusRing.rotation.z += 0.075
+
+  neptune.rotation.y += 0.075
 
   abel.rotation.y += 0.01
   abel.rotation.z += 0.01
