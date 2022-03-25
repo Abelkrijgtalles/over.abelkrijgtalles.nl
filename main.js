@@ -88,6 +88,19 @@ const venus = new THREE.Mesh(
 
 scene.add(venus)
 
+const earthTexture = new THREE.TextureLoader().load('earth.jpg')
+const earthBump = new THREE.TextureLoader().load('earthbump.jpg')
+
+const earth = new THREE.Mesh(
+  new THREE.SphereGeometry(3, 32, 32),
+  new THREE.MeshStandardMaterial({
+    map: earthTexture,
+    bumpMap: earthBump,
+  })
+)
+
+scene.add(earth)
+
 sun.position.z = 10
 sun.position.setX(-10)
 
@@ -96,6 +109,9 @@ mercury.position.setX(-10)
 
 venus.position.z = 30
 venus.position.setX(-10)
+
+earth.position.z = 40
+earth.position.setX(-10)
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top
@@ -110,6 +126,10 @@ function moveCamera() {
   venus.rotation.x += 0.05
   venus.rotation.y += 0.075
   venus.rotation.z += 0.05
+
+  earth.rotation.x += 0.05
+  earth.rotation.y += 0.075
+  earth.rotation.z += 0.05
 
   abel.rotation.y += 0.01
   abel.rotation.z += 0.01
