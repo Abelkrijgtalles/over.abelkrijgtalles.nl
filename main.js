@@ -1,7 +1,5 @@
 import './style.css'
 
-import imgUrl from './space.jpg'
-
 import * as THREE from 'three'
 
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
@@ -49,8 +47,17 @@ function addStar() {
 
 Array(200).fill().forEach(addStar)
 
-const spaceTexture= new THREE.TextureLoader().load(imgUrl)
+const spaceTexture = new THREE.TextureLoader().load('space.jpg')
 scene.background = spaceTexture
+
+const abelTexture = new THREE.TextureLoader().load('abel.jpg')
+
+const abel = new THREE.Mesh(
+  new THREE.BoxGeometry(3, 3, 3),
+  new THREE.MeshBasicMaterial({ map: abelTexture })
+)
+
+scene.add(abel)
 
 function animate() {
   requestAnimationFrame(animate)
