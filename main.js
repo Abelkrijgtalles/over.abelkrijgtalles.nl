@@ -51,25 +51,65 @@ const abel = new THREE.Mesh(
 
 scene.add(abel)
 
-const earthTexture = new THREE.TextureLoader().load('earth.jpg')
+const sunTexture = new THREE.TextureLoader().load('sun.jpg')
 
-const earth = new THREE.Mesh(
+const sun = new THREE.Mesh(
   new THREE.SphereGeometry(3, 32, 32),
   new THREE.MeshStandardMaterial({
-    map: earthTexture,
+    map: sunTexture,
   })
 )
 
-scene.add(earth)
+scene.add(sun)
 
-earth.position.z = 30
-earth.position.setX(-10)
+const mercuryTexture = new THREE.TextureLoader().load('mercury.jpg')
+const mercuryBump = new THREE.TextureLoader().load('mercurybump.jpg')
+
+const mercury = new THREE.Mesh(
+  new THREE.SphereGeometry(3, 32, 32),
+  new THREE.MeshStandardMaterial({
+    map: mercuryTexture,
+    bumpMap: mercuryBump
+  })
+)
+
+scene.add(mercury)
+
+const venusTexture = new THREE.TextureLoader().load('venus.jpg')
+const venusBump = new THREE.TextureLoader().load('venusbump.jpg')
+
+const venus = new THREE.Mesh(
+  new THREE.SphereGeometry(3, 32, 32),
+  new THREE.MeshStandardMaterial({
+    map: venusTexture,
+    bumpMap: venusBump,
+  })
+)
+
+scene.add(venus)
+
+sun.position.z = 10
+sun.position.setX(-10)
+
+mercury.position.z = 20
+mercury.position.setX(-10)
+
+venus.position.z = 30
+venus.position.setX(-10)
 
 function moveCamera() {
   const t = document.body.getBoundingClientRect().top
-  earth.rotation.x += 0.05
-  earth.rotation.y += 0.075
-  earth.rotation.z += 0.05
+  sun.rotation.x += 0.05
+  sun.rotation.y += 0.075
+  sun.rotation.z += 0.05
+
+  mercury.rotation.x += 0.05
+  mercury.rotation.y += 0.075
+  mercury.rotation.z += 0.05
+
+  venus.rotation.x += 0.05
+  venus.rotation.y += 0.075
+  venus.rotation.z += 0.05
 
   abel.rotation.y += 0.01
   abel.rotation.z += 0.01
